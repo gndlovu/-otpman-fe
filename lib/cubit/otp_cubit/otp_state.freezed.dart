@@ -21,6 +21,10 @@ OtpState _$OtpStateFromJson(Map<String, dynamic> json) {
       return _OtpStateSending.fromJson(json);
     case 'sent':
       return _OtpStateSent.fromJson(json);
+    case 'validating':
+      return _OtpStateValidating.fromJson(json);
+    case 'validated':
+      return _OtpStateValidated.fromJson(json);
     case 'error':
       return _OtpStateError.fromJson(json);
 
@@ -46,6 +50,14 @@ class _$OtpStateTearOff {
     return const _OtpStateSent();
   }
 
+  _OtpStateValidating validating() {
+    return const _OtpStateValidating();
+  }
+
+  _OtpStateValidated validated() {
+    return const _OtpStateValidated();
+  }
+
   _OtpStateError error(String error) {
     return _OtpStateError(
       error,
@@ -67,6 +79,8 @@ mixin _$OtpState {
     required TResult Function() initial,
     required TResult Function() sending,
     required TResult Function() sent,
+    required TResult Function() validating,
+    required TResult Function() validated,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +89,8 @@ mixin _$OtpState {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +99,8 @@ mixin _$OtpState {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -92,6 +110,8 @@ mixin _$OtpState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OtpStateSending value) sending,
     required TResult Function(_OtpStateSent value) sent,
+    required TResult Function(_OtpStateValidating value) validating,
+    required TResult Function(_OtpStateValidated value) validated,
     required TResult Function(_OtpStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -100,6 +120,8 @@ mixin _$OtpState {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +130,8 @@ mixin _$OtpState {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
     required TResult orElse(),
   }) =>
@@ -177,6 +201,8 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() sending,
     required TResult Function() sent,
+    required TResult Function() validating,
+    required TResult Function() validated,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -188,6 +214,8 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
   }) {
     return initial?.call();
@@ -199,6 +227,8 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -214,6 +244,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OtpStateSending value) sending,
     required TResult Function(_OtpStateSent value) sent,
+    required TResult Function(_OtpStateValidating value) validating,
+    required TResult Function(_OtpStateValidated value) validated,
     required TResult Function(_OtpStateError value) error,
   }) {
     return initial(this);
@@ -225,6 +257,8 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
   }) {
     return initial?.call(this);
@@ -236,6 +270,8 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
     required TResult orElse(),
   }) {
@@ -306,6 +342,8 @@ class _$_OtpStateSending implements _OtpStateSending {
     required TResult Function() initial,
     required TResult Function() sending,
     required TResult Function() sent,
+    required TResult Function() validating,
+    required TResult Function() validated,
     required TResult Function(String error) error,
   }) {
     return sending();
@@ -317,6 +355,8 @@ class _$_OtpStateSending implements _OtpStateSending {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
   }) {
     return sending?.call();
@@ -328,6 +368,8 @@ class _$_OtpStateSending implements _OtpStateSending {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -343,6 +385,8 @@ class _$_OtpStateSending implements _OtpStateSending {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OtpStateSending value) sending,
     required TResult Function(_OtpStateSent value) sent,
+    required TResult Function(_OtpStateValidating value) validating,
+    required TResult Function(_OtpStateValidated value) validated,
     required TResult Function(_OtpStateError value) error,
   }) {
     return sending(this);
@@ -354,6 +398,8 @@ class _$_OtpStateSending implements _OtpStateSending {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
   }) {
     return sending?.call(this);
@@ -365,6 +411,8 @@ class _$_OtpStateSending implements _OtpStateSending {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
     required TResult orElse(),
   }) {
@@ -436,6 +484,8 @@ class _$_OtpStateSent implements _OtpStateSent {
     required TResult Function() initial,
     required TResult Function() sending,
     required TResult Function() sent,
+    required TResult Function() validating,
+    required TResult Function() validated,
     required TResult Function(String error) error,
   }) {
     return sent();
@@ -447,6 +497,8 @@ class _$_OtpStateSent implements _OtpStateSent {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
   }) {
     return sent?.call();
@@ -458,6 +510,8 @@ class _$_OtpStateSent implements _OtpStateSent {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -473,6 +527,8 @@ class _$_OtpStateSent implements _OtpStateSent {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OtpStateSending value) sending,
     required TResult Function(_OtpStateSent value) sent,
+    required TResult Function(_OtpStateValidating value) validating,
+    required TResult Function(_OtpStateValidated value) validated,
     required TResult Function(_OtpStateError value) error,
   }) {
     return sent(this);
@@ -484,6 +540,8 @@ class _$_OtpStateSent implements _OtpStateSent {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
   }) {
     return sent?.call(this);
@@ -495,6 +553,8 @@ class _$_OtpStateSent implements _OtpStateSent {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
     required TResult orElse(),
   }) {
@@ -515,6 +575,292 @@ abstract class _OtpStateSent implements OtpState {
 
   factory _OtpStateSent.fromJson(Map<String, dynamic> json) =
       _$_OtpStateSent.fromJson;
+}
+
+/// @nodoc
+abstract class _$OtpStateValidatingCopyWith<$Res> {
+  factory _$OtpStateValidatingCopyWith(
+          _OtpStateValidating value, $Res Function(_OtpStateValidating) then) =
+      __$OtpStateValidatingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$OtpStateValidatingCopyWithImpl<$Res>
+    extends _$OtpStateCopyWithImpl<$Res>
+    implements _$OtpStateValidatingCopyWith<$Res> {
+  __$OtpStateValidatingCopyWithImpl(
+      _OtpStateValidating _value, $Res Function(_OtpStateValidating) _then)
+      : super(_value, (v) => _then(v as _OtpStateValidating));
+
+  @override
+  _OtpStateValidating get _value => super._value as _OtpStateValidating;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_OtpStateValidating implements _OtpStateValidating {
+  const _$_OtpStateValidating({String? $type}) : $type = $type ?? 'validating';
+
+  factory _$_OtpStateValidating.fromJson(Map<String, dynamic> json) =>
+      _$$_OtpStateValidatingFromJson(json);
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'OtpState.validating()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _OtpStateValidating);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() sending,
+    required TResult Function() sent,
+    required TResult Function() validating,
+    required TResult Function() validated,
+    required TResult Function(String error) error,
+  }) {
+    return validating();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? sending,
+    TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
+    TResult Function(String error)? error,
+  }) {
+    return validating?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? sending,
+    TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (validating != null) {
+      return validating();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OtpStateSending value) sending,
+    required TResult Function(_OtpStateSent value) sent,
+    required TResult Function(_OtpStateValidating value) validating,
+    required TResult Function(_OtpStateValidated value) validated,
+    required TResult Function(_OtpStateError value) error,
+  }) {
+    return validating(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OtpStateSending value)? sending,
+    TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
+    TResult Function(_OtpStateError value)? error,
+  }) {
+    return validating?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OtpStateSending value)? sending,
+    TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
+    TResult Function(_OtpStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (validating != null) {
+      return validating(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_OtpStateValidatingToJson(this);
+  }
+}
+
+abstract class _OtpStateValidating implements OtpState {
+  const factory _OtpStateValidating() = _$_OtpStateValidating;
+
+  factory _OtpStateValidating.fromJson(Map<String, dynamic> json) =
+      _$_OtpStateValidating.fromJson;
+}
+
+/// @nodoc
+abstract class _$OtpStateValidatedCopyWith<$Res> {
+  factory _$OtpStateValidatedCopyWith(
+          _OtpStateValidated value, $Res Function(_OtpStateValidated) then) =
+      __$OtpStateValidatedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$OtpStateValidatedCopyWithImpl<$Res>
+    extends _$OtpStateCopyWithImpl<$Res>
+    implements _$OtpStateValidatedCopyWith<$Res> {
+  __$OtpStateValidatedCopyWithImpl(
+      _OtpStateValidated _value, $Res Function(_OtpStateValidated) _then)
+      : super(_value, (v) => _then(v as _OtpStateValidated));
+
+  @override
+  _OtpStateValidated get _value => super._value as _OtpStateValidated;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_OtpStateValidated implements _OtpStateValidated {
+  const _$_OtpStateValidated({String? $type}) : $type = $type ?? 'validated';
+
+  factory _$_OtpStateValidated.fromJson(Map<String, dynamic> json) =>
+      _$$_OtpStateValidatedFromJson(json);
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'OtpState.validated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _OtpStateValidated);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() sending,
+    required TResult Function() sent,
+    required TResult Function() validating,
+    required TResult Function() validated,
+    required TResult Function(String error) error,
+  }) {
+    return validated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? sending,
+    TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
+    TResult Function(String error)? error,
+  }) {
+    return validated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? sending,
+    TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (validated != null) {
+      return validated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OtpStateSending value) sending,
+    required TResult Function(_OtpStateSent value) sent,
+    required TResult Function(_OtpStateValidating value) validating,
+    required TResult Function(_OtpStateValidated value) validated,
+    required TResult Function(_OtpStateError value) error,
+  }) {
+    return validated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OtpStateSending value)? sending,
+    TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
+    TResult Function(_OtpStateError value)? error,
+  }) {
+    return validated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OtpStateSending value)? sending,
+    TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
+    TResult Function(_OtpStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (validated != null) {
+      return validated(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_OtpStateValidatedToJson(this);
+  }
+}
+
+abstract class _OtpStateValidated implements OtpState {
+  const factory _OtpStateValidated() = _$_OtpStateValidated;
+
+  factory _OtpStateValidated.fromJson(Map<String, dynamic> json) =
+      _$_OtpStateValidated.fromJson;
 }
 
 /// @nodoc
@@ -590,6 +936,8 @@ class _$_OtpStateError implements _OtpStateError {
     required TResult Function() initial,
     required TResult Function() sending,
     required TResult Function() sent,
+    required TResult Function() validating,
+    required TResult Function() validated,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -601,6 +949,8 @@ class _$_OtpStateError implements _OtpStateError {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -612,6 +962,8 @@ class _$_OtpStateError implements _OtpStateError {
     TResult Function()? initial,
     TResult Function()? sending,
     TResult Function()? sent,
+    TResult Function()? validating,
+    TResult Function()? validated,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -627,6 +979,8 @@ class _$_OtpStateError implements _OtpStateError {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OtpStateSending value) sending,
     required TResult Function(_OtpStateSent value) sent,
+    required TResult Function(_OtpStateValidating value) validating,
+    required TResult Function(_OtpStateValidated value) validated,
     required TResult Function(_OtpStateError value) error,
   }) {
     return error(this);
@@ -638,6 +992,8 @@ class _$_OtpStateError implements _OtpStateError {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
   }) {
     return error?.call(this);
@@ -649,6 +1005,8 @@ class _$_OtpStateError implements _OtpStateError {
     TResult Function(_Initial value)? initial,
     TResult Function(_OtpStateSending value)? sending,
     TResult Function(_OtpStateSent value)? sent,
+    TResult Function(_OtpStateValidating value)? validating,
+    TResult Function(_OtpStateValidated value)? validated,
     TResult Function(_OtpStateError value)? error,
     required TResult orElse(),
   }) {

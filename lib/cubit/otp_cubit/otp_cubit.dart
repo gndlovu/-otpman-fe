@@ -12,6 +12,7 @@ class OtpCubit extends Cubit<OtpState> {
   Future<void> requestOtp(String email) async {
     emit(const OtpState.sending());
 
+    // TODO - Create request model
     var response = await otpService.requestOtp(email);
     response.fold(
       (failure) => _handleFailure(failure),
@@ -25,21 +26,53 @@ class OtpCubit extends Cubit<OtpState> {
       DioError e = failure.exception as DioError;
       switch (e.response!.statusCode) {
         case 403:
-          emitError('Maximum OTP requests reached. Please try again later.');
+          _emitError('Maximum OTP requests reached. Please try again later.');
           break;
         case 422:
-          emitError('Invalid email address.');
+          _emitError('Invalid email address.');
           break;
         default:
-          emitError('Opps!! Something went wrong. Please try again.');
+          _emitError('Opps!! Something went wrong. Please try again.');
       }
     } else {
       print('General Error: ' + failure.exception.toString());
-      emitError('Opps!! Something went wrong. Please try again.');
+      _emitError('Opps!! Something went wrong. Please try again.');
     }
   }
 
-  void emitError(String message) {
+  Future<void> validateOtp(String email, String pin) async {
+    emit(const OtpState.validating());
+
+    // TODO - Create request model
+    var response = await otpService.validateOtp(email, pin);
+    response.fold(
+      (failure) => _handleValidationFailure(failure),
+      (res) => emit(const OtpState.validated()),
+    );
+  }
+
+  void _handleValidationFailure(Failure failure) {
+    print('OTP validation failure: ' + failure.toString());
+    if (failure.exception is DioError) {
+      DioError e = failure.exception as DioError;
+      switch (e.response!.statusCode) {
+        case 403:
+        case 400:
+          _emitError('Invalid OPT.');
+          break;
+        case 422:
+          _emitError('Invalid email address or pin.');
+          break;
+        default:
+          _emitError('Opps!! Something went wrong. Please try again.');
+      }
+    } else {
+      print('General Error: ' + failure.exception.toString());
+      _emitError('Opps!! Something went wrong. Please try again.');
+    }
+  }
+
+  void _emitError(String message) {
     emit(OtpState.error(message));
   }
 }

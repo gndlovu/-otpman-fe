@@ -10,7 +10,15 @@ class OtpService {
       await Dio().post('$baseUrl/request', data: {'email': email});
       return const Right('OTP Successfully sent!');
     } on DioError catch (e) {
-      print(e.response!.statusCode);
+      return Left(ServerFailure(e));
+    }
+  }
+
+  Future<Either<Failure, String>> validateOtp(String email, String pin) async {
+    try {
+      await Dio().post('$baseUrl/validate', data: {'email': email, 'pin': pin});
+      return const Right('OTP Successfully validated!');
+    } on DioError catch (e) {
       return Left(ServerFailure(e));
     }
   }

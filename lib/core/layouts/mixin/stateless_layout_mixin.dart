@@ -7,4 +7,16 @@ mixin StatelessLayoutMixin<Page extends StatelessWidget> {
   }
 
   Widget body();
+
+  void showSnackBar(BuildContext context, String message, success) {
+    final snackBar = SnackBar(
+      content: Text(message),
+      backgroundColor: success ? Colors.green : Colors.red,
+      duration: const Duration(
+        milliseconds: 6000,
+      ),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }

@@ -7,10 +7,10 @@ import 'package:otpman_fe/cubit/otp_cubit/otp_cubit.dart';
 import 'package:otpman_fe/cubit/otp_cubit/otp_state.dart';
 import 'package:otpman_fe/data/services/otp_service.dart';
 
-class OtpRequestPage extends StatelessWidget
+class OtpValidationPage extends StatelessWidget
     with StatelessLayoutMixin
     implements AutoRouteWrapper {
-  const OtpRequestPage({Key? key}) : super(key: key);
+  const OtpValidationPage({Key? key}) : super(key: key);
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -24,10 +24,11 @@ class OtpRequestPage extends StatelessWidget
   Widget body() {
     final _formKey = GlobalKey<FormState>();
     final _emailController = TextEditingController(text: 'gladwell_n@live.com');
+    final _pinController = TextEditingController(text: '123456');
 
     return BlocConsumer<OtpCubit, OtpState>(
       builder: (context, state) {
-        if (state == const OtpState.sending()) {
+        if (state == const OtpState.validating()) {
           return const Center(child: CircularProgressIndicator());
         }
 
@@ -58,6 +59,16 @@ class OtpRequestPage extends StatelessWidget
                         return null;
                       },
                     ),
+                    TextFormField(
+                      decoration: const InputDecoration(labelText: 'PIN'),
+                      controller: _pinController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'PIN is required';
+                        }
+                        return null;
+                      },
+                    ),
                     const SizedBox(height: 35),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -67,8 +78,9 @@ class OtpRequestPage extends StatelessWidget
                           child: ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                context.read<OtpCubit>().requestOtp(
+                                context.read<OtpCubit>().validateOtp(
                                       _emailController.text,
+                                      _pinController.text,
                                     );
                               }
                             },
@@ -82,7 +94,29 @@ class OtpRequestPage extends StatelessWidget
                                     BorderRadius.all(Radius.circular(10)),
                               ),
                             ),
-                            child: const Text('Get OTP',
+                            child: const Text('Validate OTP',
+                                style: TextStyle(color: Colors.black87)),
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        SizedBox(
+                          height: 38,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              AutoRouter.of(context)
+                                  .replaceNamed(AppRoutes.otpRequestPage);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              // onPrimary: Colors.black87,
+                              primary: Colors.white,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 60),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                            ),
+                            child: const Text('Resend OTP',
                                 style: TextStyle(color: Colors.black87)),
                           ),
                         )
@@ -97,8 +131,8 @@ class OtpRequestPage extends StatelessWidget
       },
       listener: (context, state) {
         state.maybeWhen(
-          sent: () =>
-              AutoRouter.of(context).replaceNamed(AppRoutes.otpValidationPage),
+          validated: () =>
+              showSnackBar(context, 'OTP validated succcessfully.', true),
           error: (reason) => showSnackBar(context, reason, false),
           orElse: () {},
         );

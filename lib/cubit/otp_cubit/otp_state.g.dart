@@ -35,6 +35,29 @@ Map<String, dynamic> _$$_OtpStateSentToJson(_$_OtpStateSent instance) =>
       'type': instance.$type,
     };
 
+_$_OtpStateValidating _$$_OtpStateValidatingFromJson(
+        Map<String, dynamic> json) =>
+    _$_OtpStateValidating(
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_OtpStateValidatingToJson(
+        _$_OtpStateValidating instance) =>
+    <String, dynamic>{
+      'type': instance.$type,
+    };
+
+_$_OtpStateValidated _$$_OtpStateValidatedFromJson(Map<String, dynamic> json) =>
+    _$_OtpStateValidated(
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_OtpStateValidatedToJson(
+        _$_OtpStateValidated instance) =>
+    <String, dynamic>{
+      'type': instance.$type,
+    };
+
 _$_OtpStateError _$$_OtpStateErrorFromJson(Map<String, dynamic> json) =>
     _$_OtpStateError(
       json['error'] as String,
