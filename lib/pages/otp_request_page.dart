@@ -23,7 +23,7 @@ class OtpRequestPage extends StatelessWidget
   @override
   Widget body() {
     final _formKey = GlobalKey<FormState>();
-    final _emailController = TextEditingController(text: 'gladwell_n@live.com');
+    final _emailController = TextEditingController(text: '');
 
     return BlocConsumer<OtpCubit, OtpState>(
       builder: (context, state) {

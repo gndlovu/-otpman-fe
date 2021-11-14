@@ -3874,7 +3874,10 @@ adg(){var s=0,r=P.a_(t.H),q,p,o,n,m,l
 var $async$adg=P.W(function(a,b){if(a===1)return P.X(b,r)
 while(true)switch(s){case 0:s=2
 return P.ae(P.aAR(),$async$adg)
-case 2:if($.z==null){q=H.a([],t.GA)
+case 2:q=document.querySelector("#loader")
+q.toString
+J.bs(q)
+if($.z==null){q=H.a([],t.GA)
 p=$.P
 o=H.a([],t.Jh)
 n=P.ab(7,null,!1,t.JI)

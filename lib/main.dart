@@ -1,7 +1,11 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:otpman_fe/core/routing/_routing.dart';
 
 void main() {
+  querySelector('#loader')!.remove();
+
   runApp(const OtpApp());
 }
 

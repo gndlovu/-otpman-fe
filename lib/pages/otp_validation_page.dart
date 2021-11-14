@@ -23,8 +23,8 @@ class OtpValidationPage extends StatelessWidget
   @override
   Widget body() {
     final _formKey = GlobalKey<FormState>();
-    final _emailController = TextEditingController(text: 'gladwell_n@live.com');
-    final _pinController = TextEditingController(text: '123456');
+    final _emailController = TextEditingController(text: '');
+    final _pinController = TextEditingController(text: '');
 
     return BlocConsumer<OtpCubit, OtpState>(
       builder: (context, state) {
